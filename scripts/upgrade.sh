@@ -4,7 +4,7 @@
 pid=$(ps aux | grep 'ChatGPT-Next-Web' | grep -v 'grep' | head -n 1 | awk '{print $2}')
 
 if [[ -n "$pid" ]]; then
-	kill $pid
+	sudo kill $pid
 fi
 
 cd /home/ubuntu/ChatGPT-Next-Web/
