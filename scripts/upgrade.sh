@@ -14,3 +14,5 @@ fi
 
 # restart
 bash /home/ubuntu/launchGpt.sh
+
+# end
