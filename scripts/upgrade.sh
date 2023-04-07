@@ -7,7 +7,7 @@ yarn install
 yarn build
 
 # kill existing
-pid=$(ps aux | grep 'ChatGPT-Next-Web' | grep -v 'grep' | head -n 1 | awk '{print $2}')
+pid=$(ps aux | grep '/home/ubuntu/ChatGPT-Next-Web/node_modules/.bin/next start' | grep -v 'grep' | head -n 1 | awk '{print $2}')
 if [[ -n "$pid" ]]; then
 	sudo kill $pid
 fi
