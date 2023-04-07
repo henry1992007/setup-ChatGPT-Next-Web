@@ -13,4 +13,4 @@ if [[ -n "$pid" ]]; then
 fi
 
 # restart
-bash /home/ubuntu/launchGpt.sh
+bash /home/ubuntu/launchGpt.sh &
