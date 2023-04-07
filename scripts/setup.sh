@@ -53,4 +53,4 @@ sudo echo -e '\n[Install]\nWantedBy=multi-user.target\nAlias=rc-local.service\n'
 sudo ln -s /lib/systemd/system/rc-local.service /etc/systemd/system/
 
 # start
-bash /home/ubuntu/launchGpt.sh &
+bash /home/ubuntu/launchGpt.sh
