@@ -8,5 +8,5 @@ bash <(curl -s https://raw.githubusercontent.com/henry1992007/setup-ChatGPT-Next
 
 upgrade：
 ```shell
-bash <(curl -s https://raw.githubusercontent.com/henry1992007/setup-ChatGPT-Next-Web/main/scripts/upgrade.sh) &
+nohup bash <(curl -s https://raw.githubusercontent.com/henry1992007/setup-ChatGPT-Next-Web/main/scripts/upgrade.sh) > upgrade.log 2>&1 &
 ```
