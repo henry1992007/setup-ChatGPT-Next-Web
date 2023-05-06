@@ -43,14 +43,8 @@ yarn build
 
 # setup auto start
 cd /home/ubuntu
-sudo echo -e '#!/bin/bash\n\ncd /home/ubuntu/ChatGPT-Next-Web/\n/home/ubuntu/.nvm/versions/node/v18.15.0/bin/node /home/ubuntu/ChatGPT-Next-Web/node_modules/.bin/next start' > /home/ubuntu/launchGpt.sh
-sudo echo -e '#!/bin/bash\n\nbash /home/ubuntu/launchGpt.sh >> /var/log/rc.local.log 2>&1' > rc.local
-sudo mv rc.local /etc/
-sudo chmod +x /etc/rc.local
-sudo cp /lib/systemd/system/rc-local.service /lib/systemd/system/rc-local.service_bak
-sudo chmod 777 /lib/systemd/system/rc-local.service
-sudo echo -e '\n[Install]\nWantedBy=multi-user.target\nAlias=rc-local.service\n' >> /lib/systemd/system/rc-local.service
-sudo ln -s /lib/systemd/system/rc-local.service /etc/systemd/system/
-
-# start
-bash /home/ubuntu/launchGpt.sh
+sudo echo -e '[Unit]\nDescription=Launch ChatGTP Service\n\n[Service]\nExecStart=/bin/bash -c '\''source /home/ubuntu/.nvm/nvm.sh && nvm use 18.15.0 && yarn start > launch.log 2>&1'\''\nRestart=always\nUser=ubuntu\nWorkingDirectory=/home/ubuntu/ChatGPT-Next-Web\n\n[Install]\nWantedBy=multi-user.target' > chat.service
+sudo mv chat.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl start chat.service
+sudo systemctl enable chat.service
