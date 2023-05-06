@@ -33,7 +33,7 @@ nvm use 18.15.0
 
 # install project
 cd /home/ubuntu
-git clone https://github.com/Yidadaa/ChatGPT-Next-Web.git
+git clone https://github.com/henry1992007/ChatGPT-Next-Web.git
 cd ChatGPT-Next-Web
 echo "Your OPENAI_API_KEY: "
 read OPENAI_API_KEY
