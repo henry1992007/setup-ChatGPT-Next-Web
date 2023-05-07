@@ -1,5 +1,26 @@
 #!/bin/bash
 
+while getopts ":k:" opt; do
+  case $opt in
+    k)
+      OPENAI_API_KEY="$OPTARG"
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      exit 1
+      ;;
+    :)
+      echo "Option -$OPTARG requires an argument." >&2
+      exit 1
+      ;;
+  esac
+done
+
+if [ -z "$OPENAI_API_KEY" ]; then
+  echo "Error: Option -k is required." >&2
+  exit 1
+fi
+
 # update
 sudo apt update;
 sudo apt-get update;
@@ -35,8 +56,6 @@ nvm use 18.15.0
 cd /home/ubuntu
 git clone https://github.com/henry1992007/ChatGPT-Next-Web.git
 cd ChatGPT-Next-Web
-echo "Your OPENAI_API_KEY: "
-read OPENAI_API_KEY
 echo "OPENAI_API_KEY=$OPENAI_API_KEY" > .env.local
 yarn install
 yarn build
