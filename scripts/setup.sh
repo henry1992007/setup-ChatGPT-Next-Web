@@ -64,6 +64,7 @@ yarn build
 cd /home/ubuntu
 sudo echo -e '[Unit]\nDescription=Launch ChatGTP Service\n\n[Service]\nExecStart=/bin/bash -c '\''source /home/ubuntu/.nvm/nvm.sh && nvm use 18.15.0 && yarn start > launch.log 2>&1'\''\nRestart=always\nUser=ubuntu\nWorkingDirectory=/home/ubuntu/ChatGPT-Next-Web\n\n[Install]\nWantedBy=multi-user.target' > chat.service
 sudo mv chat.service /etc/systemd/system/
+chmod 777 /etc/systemd/system/chat.service
 sudo systemctl daemon-reload
 sudo systemctl start chat.service
 sudo systemctl enable chat.service
